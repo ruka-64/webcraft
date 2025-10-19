@@ -7,7 +7,6 @@
     "start": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "keywords": [],
   "author": "ruka-64",
   "license": "AGPL-3.0-only",
