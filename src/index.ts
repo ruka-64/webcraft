@@ -20,12 +20,3 @@ bot.once('spawn', async () => {
 bot.on('messagestr', (msg) => {
   console.log(msg);
 });
-
-bot.on('login', () => {
-  const r = repl.start('> ')
-  r.context.bot = bot
-
-  r.on('exit', () => {
-    bot.end()
-  })
-})
