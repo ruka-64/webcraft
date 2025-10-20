@@ -12,6 +12,7 @@
   "license": "AGPL-3.0-only",
   "packageManager": "pnpm@10.13.1",
   "dependencies": {
+    "blessed": "^0.1.81",
     "canvas": "^3.2.0",
     "mineflayer": "^4.33.0",
     "prismarine-viewer": "^1.33.0",
