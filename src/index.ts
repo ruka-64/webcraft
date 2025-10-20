@@ -22,10 +22,11 @@ const logBox = blessed.log({
   scrollbar: {
     ch: ' ',
   },
+  /*
   style: {
     fg: 'white',
     bg: 'black'
-  }
+  }*/
 });
 
 const inputBar = blessed.textbox({
@@ -99,7 +100,8 @@ bot.on('login', () => {
 });
 
 bot.on('kicked', (reason) => {
-    log(`Kicked: ${reason}`);
+    log('kicked:');
+    log(reason)
 });
 
 bot.on('error', (err) => {
