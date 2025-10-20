@@ -52,6 +52,8 @@ const log = (text:string) => {
 
 // 終了キーの設定
 screen.key(['escape', 'q', 'C-c'], () => {
+  log('Bye')
+  bot.end();
   process.exit(0);
 });
 
@@ -70,14 +72,14 @@ const bot = createBot({
 });
 
 // 入力バーが内容を送信（Enterキー）したときの処理
-inputBar.on('submit', (text) => {
-  if (text.trim() === '') {
+inputBar.on('submit', (str) => {
+  if (str.trim() === '') {
     // 空行の場合は何もしない
   } else {
-    // ボットにチャットを送信
-    bot.chat(text);
+    // execute
+    eval(str)
     // TUIに送信したメッセージを表示
-    log(`[Sent] ${text}`);
+    log(`> ${str}`);
   }
   inputBar.clearValue();
   inputBar.focus();
@@ -85,21 +87,15 @@ inputBar.on('submit', (text) => {
 
 // ボットイベントとTUIの統合
 bot.once('spawn', async () => {
-  log('Bot spawned. Starting viewer...');
   mineflayerViewer(bot, { port: 3000, firstPerson: true, viewDistance: 5 });
-  
-  log('Sending initial command: /helloworld');
   bot.chat('/helloworld');
-  
   await bot.waitForTicks(40);
-  
-  log('Switching server: /server NeoEarth');
   bot.chat('/server NeoEarth');
 });
 
 bot.on('login', () => {
     log(`Logged in as ${bot.username}`);
-    inputBar.focus(); // ログイン後にフォーカス
+    inputBar.focus();
 });
 
 bot.on('kicked', (reason) => {
@@ -115,8 +111,7 @@ bot.on('end', () => {
 });
 
 bot.on('messagestr', (msg) => {
-  // MineflayerのチャットメッセージをTUIに表示
-  log(`[Chat] ${msg}`);
+  log(msg);
 });
 
 // 初回レンダリングとフォーカス
