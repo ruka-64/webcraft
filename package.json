@@ -17,5 +17,8 @@
     "mineflayer": "^4.33.0",
     "prismarine-viewer": "^1.33.0",
     "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/blessed": "^0.1.25"
   }
 }
