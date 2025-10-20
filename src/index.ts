@@ -1,22 +1,31 @@
 import { createBot } from "mineflayer"
-import { headless, mineflayer as mineflayerViewer } from "prismarine-viewer"
-
+import { mineflayer as mineflayerViewer } from "prismarine-viewer"
+import repl from 'repl'
 
 const bot = createBot({
   username: 'Bot',
   host: "marvgame.net",
   port: 25565,
-  auth: "microsoft"
+  auth: "microsoft",
+  version: '1.21.1'
 })
 
 bot.once('spawn', async () => {
   mineflayerViewer(bot, { port: 3000, firstPerson: true, viewDistance: 5 }) // Start the viewing server on port 3000
-  while (1) {
-    bot.setControlState('forward', true);
-    bot.setControlState('back', false);
-    await bot.waitForTicks(40);
-    bot.setControlState('forward', false);
-    bot.setControlState('back', true);
-    await bot.waitForTicks(40);
-  }
+  bot.chat('/helloworld');
+  await bot.waitForTicks(40);
+  bot.chat('/server NeoEarth');
+})
+
+bot.on('messagestr', (msg) => {
+  console.log(msg);
+});
+
+bot.on('login', () => {
+  const r = repl.start('> ')
+  r.context.bot = bot
+
+  r.on('exit', () => {
+    bot.end()
+  })
 })
