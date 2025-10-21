@@ -105,25 +105,29 @@ screen.key('w', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch + 5, yaw)
+  bot.look(pitch + 1, yaw)
+  log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('s', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch - 5, yaw)
+  bot.look(pitch - 1, yaw)
+  log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('a', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch, yaw - 5)
+  bot.look(pitch, yaw - 1)
+  log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('d', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch, yaw + 5)
+  bot.look(pitch, yaw + 1)
+  log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 
 screen.key('up', () => {
