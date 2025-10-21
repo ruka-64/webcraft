@@ -52,23 +52,22 @@ const log = (text:string) => {
 };
 
 // 終了キーの設定
-screen.key(['escape', 'q', 'C-c'], () => {
+screen.key(['C-c'], () => {
   log('Bye')
   bot.end();
   process.exit(0);
 });
 
-// 入力バーへのフォーカス
-const focus = () => {
+inputBar.key('escape', () => {
   const yes = toggleState('I')
   if (yes) {
     log('[Mode] Input')
     inputBar.focus();
   } else {
     log('[Mode] Control');
-    inputBar.cancel()
+    logBox.focus()
   }
-};
+})
 
 type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift' | 'w' | 'a' | 's' | 'd' | 'I'
 
