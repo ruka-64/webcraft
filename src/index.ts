@@ -62,6 +62,48 @@ screen.key('enter', () => {
   inputBar.focus();
 });
 
+type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift'
+
+const keyState:Record<Keys,boolean> = {
+  up: false,
+  down: false,
+  left: false,
+  right: false,
+  space: false,
+  shift: false,
+}
+
+const toggleState = (x: Keys) => {
+  keyState[x] = !keyState[x];
+  return keyState[x]
+}
+
+screen.key('up', () => {
+  const bool = toggleState('up');
+  bot.setControlState('forward', bool)
+})
+
+screen.key('down', () => {
+  const bool = toggleState('down');
+  bot.setControlState('back', bool)
+})
+screen.key('left', () => {
+  const bool = toggleState('left');
+  bot.setControlState('left', bool)
+})
+screen.key('right', () => {
+  const bool = toggleState('right');
+  bot.setControlState('right', bool)
+})
+screen.key('space', () => {
+  const bool = toggleState('space');
+  bot.setControlState('jump', bool)
+})
+screen.key('z', () => {
+  const bool = toggleState('shift');
+  bot.setControlState('sneak', bool)
+})
+
 // Mineflayerボットのセットアップ
 const bot = createBot({
   username: 'Bot',
