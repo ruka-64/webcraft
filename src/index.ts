@@ -63,7 +63,7 @@ screen.key('enter', () => {
   inputBar.focus();
 });
 
-type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift'
+type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift' | 'w' | 'a' | 's' | 'd'
 
 const keyState:Record<Keys,boolean> = {
   up: false,
@@ -72,12 +72,42 @@ const keyState:Record<Keys,boolean> = {
   right: false,
   space: false,
   shift: false,
+  w: false,
+  a: false,
+  s: false,
+  d: false,
+
 }
 
 const toggleState = (x: Keys) => {
   keyState[x] = !keyState[x];
   return keyState[x]
 }
+
+screen.key('w', () => {
+  const e = bot.entity
+  const pitch = e.pitch
+  const yaw = e.yaw;
+  bot.look(pitch + 5, yaw)
+})
+screen.key('s', () => {
+  const e = bot.entity
+  const pitch = e.pitch
+  const yaw = e.yaw;
+  bot.look(pitch - 5, yaw)
+})
+screen.key('a', () => {
+  const e = bot.entity
+  const pitch = e.pitch
+  const yaw = e.yaw;
+  bot.look(pitch, yaw - 5)
+})
+screen.key('d', () => {
+  const e = bot.entity
+  const pitch = e.pitch
+  const yaw = e.yaw;
+  bot.look(pitch, yaw + 5)
+})
 
 screen.key('up', () => {
   const bool = toggleState('up');
