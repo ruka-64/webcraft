@@ -123,14 +123,14 @@ screen.key('a', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(yaw - 0.05, pitch)
+  bot.look(yaw + 0.05, pitch)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('d', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(yaw + 0.05, pitch)
+  bot.look(yaw - 0.05, pitch)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 
