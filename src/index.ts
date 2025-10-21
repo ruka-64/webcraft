@@ -108,7 +108,7 @@ screen.key('w', () => {
   const pitch = e.pitch
   const yaw = e.yaw;
   const newPitch = Math.max(MIN_PITCH, Math.min(MAX_PITCH, pitch + 0.03));
-  bot.look(newPitch, yaw)
+  bot.look(yaw, newPitch)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('s', () => {
@@ -116,21 +116,21 @@ screen.key('s', () => {
   const pitch = e.pitch
   const yaw = e.yaw;
   const newPitch = Math.max(MIN_PITCH, Math.min(MAX_PITCH, pitch - 0.03));
-  bot.look(newPitch, yaw)
+  bot.look(yaw, newPitch)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('a', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch, yaw - 0.05)
+  bot.look(yaw - 0.05, pitch)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('d', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch, yaw + 0.05)
+  bot.look(yaw + 0.05, pitch)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 
