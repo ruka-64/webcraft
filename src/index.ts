@@ -100,33 +100,37 @@ const toggleState = (x: Keys) => {
   keyState[x] = !keyState[x];
   return keyState[x]
 }
+const MAX_PITCH = Math.PI / 2;
+const MIN_PITCH = -Math.PI / 2; 
 
 screen.key('w', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch + 1, yaw)
+  const newPitch = Math.max(MIN_PITCH, Math.min(MAX_PITCH, pitch + 0.03));
+  bot.look(newPitch, yaw)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('s', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch - 1, yaw)
+  const newPitch = Math.max(MIN_PITCH, Math.min(MAX_PITCH, pitch - 0.03));
+  bot.look(newPitch, yaw)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('a', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch, yaw - 1)
+  bot.look(pitch, yaw - 0.05)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 screen.key('d', () => {
   const e = bot.entity
   const pitch = e.pitch
   const yaw = e.yaw;
-  bot.look(pitch, yaw + 1)
+  bot.look(pitch, yaw + 0.05)
   log(`[dev] curr: p=${e.pitch},y=${e.yaw}`)
 })
 
