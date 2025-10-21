@@ -68,6 +68,16 @@ inputBar.key('escape', () => {
     logBox.focus()
   }
 })
+logBox.key('escape', () => {
+  const yes = toggleState('I')
+  if (yes) {
+    log('[Mode] Input')
+    inputBar.focus();
+  } else {
+    log('[Mode] Control');
+    logBox.focus()
+  }
+})
 
 type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift' | 'w' | 'a' | 's' | 'd' | 'I'
 
