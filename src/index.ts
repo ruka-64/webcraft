@@ -60,10 +60,17 @@ screen.key(['escape', 'q', 'C-c'], () => {
 
 // 入力バーへのフォーカス
 screen.key('enter', () => {
-  inputBar.focus();
+  const yes = toggleState('enter')
+  if (yes) {
+    log('[Mode] Input')
+    inputBar.focus();
+  } else {
+    log('[Mode] Control');
+    inputBar.cancel()
+  }
 });
 
-type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift' | 'w' | 'a' | 's' | 'd'
+type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift' | 'w' | 'a' | 's' | 'd' | 'enter'
 
 const keyState:Record<Keys,boolean> = {
   up: false,
@@ -76,6 +83,7 @@ const keyState:Record<Keys,boolean> = {
   a: false,
   s: false,
   d: false,
+  enter: false,
 
 }
 
