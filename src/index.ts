@@ -59,8 +59,7 @@ screen.key(['escape', 'q', 'C-c'], () => {
 });
 
 // 入力バーへのフォーカス
-// Shift + i
-screen.key('I', () => {
+const focus = () => {
   const yes = toggleState('I')
   if (yes) {
     log('[Mode] Input')
@@ -69,7 +68,7 @@ screen.key('I', () => {
     log('[Mode] Control');
     inputBar.cancel()
   }
-});
+};
 
 type Keys = 'up' | 'down' | 'left' | 'right' | 'space' | 'shift' | 'w' | 'a' | 's' | 'd' | 'I'
 
